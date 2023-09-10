@@ -19,7 +19,9 @@ public class PurchaseForm {
     private final SelenideElement NameField = $x("//*[@id=\"root\"]/div/form/fieldset/div[3]/span/span[1]/span/span/span[2]/input");
     private final SelenideElement cvvField = $x("//*[@id=\"root\"]/div/form/fieldset/div[3]/span/span[2]/span/span/span[2]/input");
     private final SelenideElement acceptButton = $x("//*[@id=\"root\"]/div/form/fieldset/div[4]/button");
-    private final SelenideElement notification = $(".notification__content");
+    private final ElementsCollection notifications = $$(".notification__content");
+    private final SelenideElement notificationSuccess = notifications.filterBy(Condition.text("Операция одобрена Банком.")).first();
+    private final SelenideElement notificationError = notifications.filterBy(Condition.text("Ошибка! Банк отказал в проведении операции.")).first();
     public void setDate (DataHelper.SetDate date) {
         monthField.setValue(date.getMonth());
         yearField.setValue(date.getYear());
@@ -36,8 +38,13 @@ public class PurchaseForm {
     public void acceptButtonClick (){
         acceptButton.click();
     }
-    public void notificationSuccess () {
-        notification.shouldHave(Condition.text("Операция одобрена Банком.").visible.appear, Duration.ofSeconds(10));
+    public void isNotificationSuccess () {
+        notificationSuccess.shouldBe(Condition.visible, Duration.ofSeconds(10));
     }
+    public void isNotificationError () {
+        notificationError.shouldBe(Condition.visible, Duration.ofSeconds(10));
+    }
+
+
 }
 
