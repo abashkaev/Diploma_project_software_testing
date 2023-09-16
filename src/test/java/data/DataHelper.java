@@ -73,6 +73,15 @@ public class DataHelper {
         String yearStr = pastDate.format(formatterYear);
         return new SetDate(monthStr, yearStr);
     }
+    public static SetDate getNextYearJanuary () {
+        LocalDate currentDate = LocalDate.now();
+        LocalDate januaryNextYear = currentDate.plusYears(1).withMonth(1);
+        DateTimeFormatter formatterMonth = DateTimeFormatter.ofPattern("MM");
+        DateTimeFormatter formatterYear = DateTimeFormatter.ofPattern("yy");
+        String monthStr = januaryNextYear.format(formatterMonth);
+        String yearStr = januaryNextYear.format(formatterYear);
+        return new SetDate(monthStr, yearStr);
+    }
 
 
 

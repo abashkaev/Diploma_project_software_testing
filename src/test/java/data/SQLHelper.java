@@ -62,15 +62,4 @@ public class SQLHelper {
         return data;
     }
 
-    public static long getOrderEntityCount() {
-        String countSQL = "SELECT COUNT(*) FROM order_entity;";
-        try (Connection conn = DriverManager.getConnection(url, user, password)) {
-            QueryRunner runner = new QueryRunner();
-            Long count = runner.query(conn, countSQL, new ScalarHandler<>());
-            return count != null ? count : 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return 0;
-        }
-    }
 }
