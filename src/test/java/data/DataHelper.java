@@ -39,21 +39,13 @@ public class DataHelper {
     public static String getRussianName () {
         return rusFaker.name().fullName();
     }
-
-
-    public static String getCurrentMonth() {
-        LocalDate currentDate = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM");
-        String currentMonthStr = currentDate.format(formatter);
-        return currentMonthStr;
+    public static String getValidNameWithDash () {
+        String firstName = faker.name().firstName();
+        String lastName = faker.name().lastName();
+        String alterLastname = faker.name().lastName();
+        return  lastName + "-" + alterLastname + " " + firstName;
     }
 
-    public static String getCurrentYear() {
-        LocalDate currentDate = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YY");
-        String currentYearStr = currentDate.format(formatter);
-        return currentYearStr;
-    }
 
     public static SetDate getCurrentDate() { // Получение текущей даты для полей (Месяц, Год)
         LocalDate currentDate = LocalDate.now();
@@ -63,7 +55,19 @@ public class DataHelper {
         String currentYearStr = currentDate.format(formatterYear);
         return new SetDate(currentMonthStr, currentYearStr);
     }
+    public static String getCurrentMonth (){
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatterMonth = DateTimeFormatter.ofPattern("MM");
+        String currentMonthStr = currentDate.format(formatterMonth);
+        return currentMonthStr;
+    }
+    public static String getCurrentYear() {
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatterYear = DateTimeFormatter.ofPattern("yy");
 
+        String currentYearStr = currentDate.format(formatterYear);
+        return currentYearStr;
+    }
     public static SetDate getOtherDate(int month) { // В параметр вносится количество месяцев, насколько должен отличатся от текущего
         LocalDate currentDate = LocalDate.now();
         LocalDate pastDate = currentDate.plusMonths(month);
@@ -76,6 +80,15 @@ public class DataHelper {
     public static SetDate getNextYearJanuary () {
         LocalDate currentDate = LocalDate.now();
         LocalDate januaryNextYear = currentDate.plusYears(1).withMonth(1);
+        DateTimeFormatter formatterMonth = DateTimeFormatter.ofPattern("MM");
+        DateTimeFormatter formatterYear = DateTimeFormatter.ofPattern("yy");
+        String monthStr = januaryNextYear.format(formatterMonth);
+        String yearStr = januaryNextYear.format(formatterYear);
+        return new SetDate(monthStr, yearStr);
+    }
+    public static SetDate getNextYearDecember () {
+        LocalDate currentDate = LocalDate.now();
+        LocalDate januaryNextYear = currentDate.plusYears(1).withMonth(12);
         DateTimeFormatter formatterMonth = DateTimeFormatter.ofPattern("MM");
         DateTimeFormatter formatterYear = DateTimeFormatter.ofPattern("yy");
         String monthStr = januaryNextYear.format(formatterMonth);

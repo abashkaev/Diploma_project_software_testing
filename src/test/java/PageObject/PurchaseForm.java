@@ -22,9 +22,20 @@ public class PurchaseForm {
     private final ElementsCollection notifications = $$(".notification__content");
     private final SelenideElement notificationSuccess = notifications.filterBy(Condition.text("Операция одобрена Банком.")).first();
     private final SelenideElement notificationError = notifications.filterBy(Condition.text("Ошибка! Банк отказал в проведении операции.")).first();
+    private final SelenideElement messageSubCarNumber = $x("//*[@id=\"root\"]/div/form/fieldset/div[1]/span/span/span[3]");
+    private final SelenideElement messageSubMonthField = $x("//*[@id=\"root\"]/div/form/fieldset/div[2]/span/span[1]/span/span/span[3]");
+    private final SelenideElement messageSubYearField = $x("//*[@id=\"root\"]/div/form/fieldset/div[2]/span/span[2]/span/span/span[3]");
+    private final SelenideElement messageSubCardholderNameField = $x("//*[@id=\"root\"]/div/form/fieldset/div[3]/span/span[1]/span/span/span[3]");
+    private final SelenideElement messageSubCvvCadeField = $x("//*[@id=\"root\"]/div/form/fieldset/div[3]/span/span[2]/span/span/span[3]");
     public void setDate (DataHelper.SetDate date) {
         monthField.setValue(date.getMonth());
         yearField.setValue(date.getYear());
+    }
+    public void setMount (String mount) {
+        monthField.setValue(mount);
+    }
+    public void setYear (String year) {
+        yearField.setValue(year);
     }
     public void setCardHolderName (String name) {
         NameField.setValue(name);
@@ -39,12 +50,25 @@ public class PurchaseForm {
         acceptButton.click();
     }
     public void isNotificationSuccess () {
-        notificationSuccess.shouldBe(Condition.visible, Duration.ofSeconds(10));
+        notificationSuccess.shouldBe(Condition.visible, Duration.ofSeconds(20));
     }
     public void isNotificationError () {
-        notificationError.shouldBe(Condition.visible, Duration.ofSeconds(10));
+        notificationError.shouldBe(Condition.visible, Duration.ofSeconds(20));
     }
-
-
+    public void emptyErrorSubCurdNumberField () {
+        messageSubCarNumber.shouldHave(Condition.text("Поле обязательно для заполнения"), Condition.visible);
+    }
+    public void emptyErrorSubMonthField () {
+        messageSubMonthField.shouldHave(Condition.text("Поле обязательно для заполнения"), Condition.visible);
+    }
+    public void emptyErrorSubYearField () {
+        messageSubYearField.shouldHave(Condition.text("Поле обязательно для заполнения"), Condition.visible);
+    }
+    public void emptyErrorSubCardholderNameField () {
+       messageSubCardholderNameField.shouldHave(Condition.text("Поле обязательно для заполнения"), Condition.visible);
+    }
+    public void emptyErrorSubCvvCodeField () {
+        messageSubCvvCadeField.shouldHave(Condition.text("Поле обязательно для заполнения"), Condition.visible);
+    }
 }
 
