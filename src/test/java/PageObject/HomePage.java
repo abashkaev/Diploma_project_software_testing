@@ -18,7 +18,7 @@ public class HomePage {
         header.shouldHave(Condition.text("Путешествие дня"));
     }
 
-    public void openByeForm() {
+    public void openBuyForm() {
         buttonForPurchase.click();
     }
     public void openCreditForm () {

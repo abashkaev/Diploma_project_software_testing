@@ -16,12 +16,12 @@ public class DataHelper {
     private static Faker rusFaker = new Faker(new Locale("ru_RU"));
 
     public static String getApprovedCardNumber() {
-        String cardNumber = "'4444 4444 4444 4441";
+        String cardNumber = "4444 4444 4444 4441";
         return cardNumber;
     }
 
     public static String getDeclinedCardNumber() {
-        String cardNumber = "'4444 4444 4444 4442";
+        String cardNumber = "4444 4444 4444 4442";
         return cardNumber;
     }
     public static String getRandomCardNumber () {
@@ -64,17 +64,23 @@ public class DataHelper {
     public static String getCurrentYear() {
         LocalDate currentDate = LocalDate.now();
         DateTimeFormatter formatterYear = DateTimeFormatter.ofPattern("yy");
-
         String currentYearStr = currentDate.format(formatterYear);
         return currentYearStr;
     }
+    public static String getNextYear() {
+        LocalDate currentDate = LocalDate.now();
+        LocalDate futureDate = currentDate.plusYears(1);
+        DateTimeFormatter formatterYear = DateTimeFormatter.ofPattern("yy");
+        String nextYearStr = futureDate.format(formatterYear);
+        return nextYearStr;
+    }
     public static SetDate getOtherDate(int month) { // В параметр вносится количество месяцев, насколько должен отличатся от текущего
         LocalDate currentDate = LocalDate.now();
-        LocalDate pastDate = currentDate.plusMonths(month);
+        LocalDate otherDate = currentDate.plusMonths(month);
         DateTimeFormatter formatterMonth = DateTimeFormatter.ofPattern("MM");
         DateTimeFormatter formatterYear = DateTimeFormatter.ofPattern("yy");
-        String monthStr = pastDate.format(formatterMonth);
-        String yearStr = pastDate.format(formatterYear);
+        String monthStr = otherDate.format(formatterMonth);
+        String yearStr = otherDate.format(formatterYear);
         return new SetDate(monthStr, yearStr);
     }
     public static SetDate getNextYearJanuary () {
@@ -94,7 +100,16 @@ public class DataHelper {
         String monthStr = januaryNextYear.format(formatterMonth);
         String yearStr = januaryNextYear.format(formatterYear);
         return new SetDate(monthStr, yearStr);
+
     }
+    public static String getRandomOneNumber () {
+        String randomNumb = String.valueOf(faker.number().numberBetween(0,9));
+        return randomNumb;
+    }
+    public static String setCustomValue (String customValue) {
+        return customValue;
+    }
+
 
 
 
