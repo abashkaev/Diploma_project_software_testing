@@ -772,5 +772,34 @@ public class OrderTravelFormTest {
         purchaseForm.acceptButtonClick();
         purchaseForm.expiredCardErrorSubMonthField();
     }
+    @DisplayName("Попытка направить форму кредита где в поле 'Владелец' использованы русские символы")
+    @Test
+    public void tryPushCreditFormWithValueInCardHolderFieldHaveRussianLetters () {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openCreditForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setNumberCardField(DataHelper.getRandomCardNumber());
+        purchaseForm.setDate(DataHelper.getCurrentDate());
+        purchaseForm.setCardHolderName(DataHelper.getRussianName());
+        purchaseForm.setCvvField(DataHelper.getValidCvv());
+        purchaseForm.acceptButtonClick();
+        purchaseForm.wrongErrorSubCardholderNameField();
+    }
+    @DisplayName("Попытка направить форму покупки где в поле 'Владелец' использованы русские символы")
+    @Test
+    public void tryPushBuyFormWithValueInCardHolderFieldHaveRussianLetters () {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openBuyForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setNumberCardField(DataHelper.getRandomCardNumber());
+        purchaseForm.setDate(DataHelper.getCurrentDate());
+        purchaseForm.setCardHolderName(DataHelper.getRussianName());
+        purchaseForm.setCvvField(DataHelper.getValidCvv());
+        purchaseForm.acceptButtonClick();
+        purchaseForm.wrongErrorSubCardholderNameField();
+    }
+
     }
 
