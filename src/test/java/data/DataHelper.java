@@ -110,6 +110,11 @@ public class DataHelper {
         return customValue;
     }
 
+    public static String getSpecialCharacters () {
+        String specialCharacters = "!@#$%^&&*()_+";
+        return specialCharacters;
+    }
+
 
 
 

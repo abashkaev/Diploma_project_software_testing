@@ -87,7 +87,13 @@ public class PurchaseForm {
         messageSubMonthField.shouldHave(Condition.text("Неверно указан срок действия карты"), Condition.visible);
     }
     public void incorrectlyPeriodErrorSubYearField () {
-        messageSubMonthField.shouldHave(Condition.text("Неверно указан срок действия карты"), Condition.visible);
+        messageSubYearField.shouldHave(Condition.text("Неверно указан срок действия карты"), Condition.visible);
+    }
+    public void expiredCardErrorSubYearField () {
+        messageSubYearField.shouldHave(Condition.text("Истёк срок действия карты"), Condition.visible);
+    }
+    public void expiredCardErrorSubMonthField () {
+        messageSubMonthField.shouldHave(Condition.text("Истёк срок действия карты"), Condition.visible);
     }
     public void wrongErrorSubYearField () {
         messageSubYearField.shouldHave(Condition.text("Неверный формат"), Condition.visible);
@@ -98,6 +104,12 @@ public class PurchaseForm {
 
     public void isEmptyCardNumberField () {
         numberCardField.shouldBe(empty);
+    }
+    public void isEmptyMonthField () {
+        monthField.shouldBe(empty);
+    }
+    public void isEmptyYearField () {
+        yearField.shouldBe(empty);
     }
     public void backspaceOnCardNumberField () {
         numberCardField.sendKeys(Keys.BACK_SPACE);

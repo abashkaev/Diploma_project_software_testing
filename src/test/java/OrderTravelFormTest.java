@@ -493,6 +493,7 @@ public class OrderTravelFormTest {
         purchaseForm.acceptButtonClick();
         purchaseForm.wrongErrorSubMonthField();
     }
+
     @DisplayName("Попытка направить форму покупки с полем 'Месяц' содержащую всего одну цифру")
     @Test
     public void tryPushBuyFormWithValueInMountFieldHaveOnlyOneDigits() {
@@ -524,6 +525,7 @@ public class OrderTravelFormTest {
         purchaseForm.acceptButtonClick();
         purchaseForm.incorrectlyPeriodErrorSubMonthField();
     }
+
     @DisplayName("Попытка направить форму кредита с полем 'Месяц', содержащим значение '00'")
     @Test
     public void tryPushCreditFormWithValueInMountFieldHaveDoubleZero() {
@@ -539,6 +541,236 @@ public class OrderTravelFormTest {
         purchaseForm.acceptButtonClick();
         purchaseForm.incorrectlyPeriodErrorSubMonthField();
     }
-}
 
+    @DisplayName("Попытка направить форму покупки с полем 'Месяц', содержащим значение '13'")
+    @Test
+    public void tryPushBuyFormWithValueInMountFieldHaveThirteen() {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openBuyForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setNumberCardField(DataHelper.getRandomCardNumber());
+        purchaseForm.setMount(DataHelper.setCustomValue("13"));
+        purchaseForm.setYear(DataHelper.getNextYear());
+        purchaseForm.setCardHolderName(DataHelper.validCardHolderName());
+        purchaseForm.setCvvField(DataHelper.getValidCvv());
+        purchaseForm.acceptButtonClick();
+        purchaseForm.incorrectlyPeriodErrorSubMonthField();
+    }
+
+    @DisplayName("Попытка направить форму покупки с полем 'Месяц', содержащим значение '13'")
+    @Test
+    public void tryPushCreditFormWithValueInMountFieldHaveThirteen() {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openBuyForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setNumberCardField(DataHelper.getRandomCardNumber());
+        purchaseForm.setMount(DataHelper.setCustomValue("13"));
+        purchaseForm.setYear(DataHelper.getNextYear());
+        purchaseForm.setCardHolderName(DataHelper.validCardHolderName());
+        purchaseForm.setCvvField(DataHelper.getValidCvv());
+        purchaseForm.acceptButtonClick();
+        purchaseForm.incorrectlyPeriodErrorSubMonthField();
+    }
+
+    @DisplayName("Попытка использовать не числовое значение в поле 'Месяц', при оформлении кредита")
+    @Test
+    public void useLettersInMonthFieldWithCreditForm() {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openCreditForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setMount(DataHelper.validCardHolderName());
+        purchaseForm.isEmptyMonthField();
+    }
+
+    @DisplayName("Попытка использовать не числовое значение в поле 'Месяц', при покупке")
+    @Test
+    public void useLettersInMonthFieldWithBuyForm() {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openBuyForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setMount(DataHelper.validCardHolderName());
+        purchaseForm.isEmptyMonthField();
+    }
+
+    @DisplayName("Попытка использовать специальные символы в поле 'Месяц', при покупке")
+    @Test
+    public void useSpecialCharactersInMonthFieldWithBuyForm() {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openBuyForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setMount(DataHelper.getSpecialCharacters());
+        purchaseForm.isEmptyMonthField();
+    }
+
+    @DisplayName("Попытка использовать специальные символы в поле 'Месяц', при оформлении кредита")
+    @Test
+    public void useSpecialCharactersInMonthFieldWithCreditForm() {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openCreditForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setMount(DataHelper.getSpecialCharacters());
+        purchaseForm.isEmptyMonthField();
+    }
+
+    @DisplayName("Попытка направить форму покупки с полем 'Год' содержащую всего одну цифру")
+    @Test
+    public void tryPushBuyFormWithValueInYearFieldHaveOnlyOneDigits() {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openBuyForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setNumberCardField(DataHelper.getRandomCardNumber());
+        purchaseForm.setMount(DataHelper.getCurrentMonth());
+        purchaseForm.setYear(DataHelper.getRandomOneNumber());
+        purchaseForm.setCardHolderName(DataHelper.validCardHolderName());
+        purchaseForm.setCvvField(DataHelper.getValidCvv());
+        purchaseForm.acceptButtonClick();
+        purchaseForm.wrongErrorSubYearField();
+    }
+    @DisplayName("Попытка направить форму оформления кредита с полем 'Год' содержащую всего одну цифру")
+    @Test
+    public void tryPushCreditFormWithValueInYearFieldHaveOnlyOneDigits() {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openCreditForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setNumberCardField(DataHelper.getRandomCardNumber());
+        purchaseForm.setMount(DataHelper.getCurrentMonth());
+        purchaseForm.setYear(DataHelper.getRandomOneNumber());
+        purchaseForm.setCardHolderName(DataHelper.validCardHolderName());
+        purchaseForm.setCvvField(DataHelper.getValidCvv());
+        purchaseForm.acceptButtonClick();
+        purchaseForm.wrongErrorSubYearField();
+    }
+    @DisplayName("Попытка направить форму покупки где в поле 'Год' указан предидущий год")
+    @Test
+    public void tryPushBuyFormWithValueInYearFieldHaveLastYear () {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openBuyForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setNumberCardField(DataHelper.getRandomCardNumber());
+        purchaseForm.setDate(DataHelper.getOtherDate(-12));
+        purchaseForm.setCardHolderName(DataHelper.validCardHolderName());
+        purchaseForm.setCvvField(DataHelper.getValidCvv());
+        purchaseForm.acceptButtonClick();
+        purchaseForm.expiredCardErrorSubYearField();
+    }
+    @DisplayName("Попытка направить форму оформления кредита  где в поле 'Год' указан предидущий год")
+    @Test
+    public void tryPushCreditFormWithValueInYearFieldHaveLastYear () {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openCreditForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setNumberCardField(DataHelper.getRandomCardNumber());
+        purchaseForm.setDate(DataHelper.getOtherDate(-12));
+        purchaseForm.setCardHolderName(DataHelper.validCardHolderName());
+        purchaseForm.setCvvField(DataHelper.getValidCvv());
+        purchaseForm.acceptButtonClick();
+        purchaseForm.expiredCardErrorSubYearField();
+    }
+    @DisplayName("Попытка направить форму оформления кредита  где в поле 'Год' указано текущий год +6 лет")
+    @Test
+    public void tryPushCreditFormWithValueInYearFieldHavePlusSixYear () {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openCreditForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setNumberCardField(DataHelper.getRandomCardNumber());
+        purchaseForm.setDate(DataHelper.getOtherDate(72));
+        purchaseForm.setCardHolderName(DataHelper.validCardHolderName());
+        purchaseForm.setCvvField(DataHelper.getValidCvv());
+        purchaseForm.acceptButtonClick();
+        purchaseForm.incorrectlyPeriodErrorSubYearField();
+    }
+    @DisplayName("Попытка направить форму покупки где в поле 'Год' указано текущий год +6 лет")
+    @Test
+    public void tryPushBuyFormWithValueInYearFieldHavePlusSixYear () {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openBuyForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setNumberCardField(DataHelper.getRandomCardNumber());
+        purchaseForm.setDate(DataHelper.getOtherDate(72));
+        purchaseForm.setCardHolderName(DataHelper.validCardHolderName());
+        purchaseForm.setCvvField(DataHelper.getValidCvv());
+        purchaseForm.acceptButtonClick();
+        purchaseForm.incorrectlyPeriodErrorSubYearField();
+    }
+    @DisplayName("Попытка ввести не числовое значение в поле 'Год' при покупке")
+    @Test
+    public void useLettersInYearFieldWithBuyForm() {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openBuyForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setYear(DataHelper.validCardHolderName());
+        purchaseForm.isEmptyYearField();
+    }
+    @DisplayName("Попытка ввести не числовое значение в поле 'Год' при оформлении кредита")
+    @Test
+    public void useLettersInYearFieldWithCreditForm() {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openCreditForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setYear(DataHelper.validCardHolderName());
+        purchaseForm.isEmptyYearField();
+    }
+    @DisplayName("Попытка использовать специальные символы в поле 'Год', при покупке")
+    @Test
+    public void useSpecialCharactersInYearFieldWithBuyForm() {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openBuyForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setYear(DataHelper.getSpecialCharacters());
+        purchaseForm.isEmptyYearField();
+    }
+    @DisplayName("Попытка использовать специальные символы в поле 'Год', при оформлении кредита")
+    @Test
+    public void useSpecialCharactersInYearFieldWithCreditForm() {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openCreditForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setYear(DataHelper.getSpecialCharacters());
+        purchaseForm.isEmptyYearField();
+    }
+    @DisplayName("Попытка направить форму покупки где в полях дата указан прошлый месяц")
+    @Test
+    public void tryPushBuyFormWithValueInDateFieldsIsLastMonth () {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openBuyForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setNumberCardField(DataHelper.getRandomCardNumber());
+        purchaseForm.setDate(DataHelper.getOtherDate(-1));
+        purchaseForm.setCardHolderName(DataHelper.validCardHolderName());
+        purchaseForm.setCvvField(DataHelper.getValidCvv());
+        purchaseForm.acceptButtonClick();
+        purchaseForm.expiredCardErrorSubMonthField();
+}
+    @DisplayName("Попытка направить форму кредита где в полях дата указан прошлый месяц")
+    @Test
+    public void tryPushCreditFormWithValueInDateFieldsIsLastMonth () {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openCreditForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setNumberCardField(DataHelper.getRandomCardNumber());
+        purchaseForm.setDate(DataHelper.getOtherDate(-1));
+        purchaseForm.setCardHolderName(DataHelper.validCardHolderName());
+        purchaseForm.setCvvField(DataHelper.getValidCvv());
+        purchaseForm.acceptButtonClick();
+        purchaseForm.expiredCardErrorSubMonthField();
+    }
+    }
 
