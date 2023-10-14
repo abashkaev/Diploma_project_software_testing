@@ -3,13 +3,11 @@ package PageObject;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.impl.CollectionElement;
 import data.DataHelper;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.Keys;
 
 import java.time.Duration;
-import java.util.Collection;
 
 import static com.codeborne.selenide.Condition.empty;
 import static com.codeborne.selenide.Selenide.*;
@@ -110,6 +108,9 @@ public class PurchaseForm {
     }
     public void isEmptyYearField () {
         yearField.shouldBe(empty);
+    }
+    public void isEmptyCVVField () {
+        cvvField.shouldBe(empty);
     }
     public void backspaceOnCardNumberField () {
         numberCardField.sendKeys(Keys.BACK_SPACE);

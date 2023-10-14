@@ -633,6 +633,7 @@ public class OrderTravelFormTest {
         purchaseForm.acceptButtonClick();
         purchaseForm.wrongErrorSubYearField();
     }
+
     @DisplayName("Попытка направить форму оформления кредита с полем 'Год' содержащую всего одну цифру")
     @Test
     public void tryPushCreditFormWithValueInYearFieldHaveOnlyOneDigits() {
@@ -648,9 +649,10 @@ public class OrderTravelFormTest {
         purchaseForm.acceptButtonClick();
         purchaseForm.wrongErrorSubYearField();
     }
+
     @DisplayName("Попытка направить форму покупки где в поле 'Год' указан предидущий год")
     @Test
-    public void tryPushBuyFormWithValueInYearFieldHaveLastYear () {
+    public void tryPushBuyFormWithValueInYearFieldHaveLastYear() {
         var homePage = new HomePage();
         homePage.isOpenHomePage();
         homePage.openBuyForm();
@@ -662,9 +664,10 @@ public class OrderTravelFormTest {
         purchaseForm.acceptButtonClick();
         purchaseForm.expiredCardErrorSubYearField();
     }
+
     @DisplayName("Попытка направить форму оформления кредита  где в поле 'Год' указан предидущий год")
     @Test
-    public void tryPushCreditFormWithValueInYearFieldHaveLastYear () {
+    public void tryPushCreditFormWithValueInYearFieldHaveLastYear() {
         var homePage = new HomePage();
         homePage.isOpenHomePage();
         homePage.openCreditForm();
@@ -676,9 +679,10 @@ public class OrderTravelFormTest {
         purchaseForm.acceptButtonClick();
         purchaseForm.expiredCardErrorSubYearField();
     }
+
     @DisplayName("Попытка направить форму оформления кредита  где в поле 'Год' указано текущий год +6 лет")
     @Test
-    public void tryPushCreditFormWithValueInYearFieldHavePlusSixYear () {
+    public void tryPushCreditFormWithValueInYearFieldHavePlusSixYear() {
         var homePage = new HomePage();
         homePage.isOpenHomePage();
         homePage.openCreditForm();
@@ -690,9 +694,10 @@ public class OrderTravelFormTest {
         purchaseForm.acceptButtonClick();
         purchaseForm.incorrectlyPeriodErrorSubYearField();
     }
+
     @DisplayName("Попытка направить форму покупки где в поле 'Год' указано текущий год +6 лет")
     @Test
-    public void tryPushBuyFormWithValueInYearFieldHavePlusSixYear () {
+    public void tryPushBuyFormWithValueInYearFieldHavePlusSixYear() {
         var homePage = new HomePage();
         homePage.isOpenHomePage();
         homePage.openBuyForm();
@@ -704,6 +709,7 @@ public class OrderTravelFormTest {
         purchaseForm.acceptButtonClick();
         purchaseForm.incorrectlyPeriodErrorSubYearField();
     }
+
     @DisplayName("Попытка ввести не числовое значение в поле 'Год' при покупке")
     @Test
     public void useLettersInYearFieldWithBuyForm() {
@@ -714,6 +720,7 @@ public class OrderTravelFormTest {
         purchaseForm.setYear(DataHelper.validCardHolderName());
         purchaseForm.isEmptyYearField();
     }
+
     @DisplayName("Попытка ввести не числовое значение в поле 'Год' при оформлении кредита")
     @Test
     public void useLettersInYearFieldWithCreditForm() {
@@ -724,6 +731,7 @@ public class OrderTravelFormTest {
         purchaseForm.setYear(DataHelper.validCardHolderName());
         purchaseForm.isEmptyYearField();
     }
+
     @DisplayName("Попытка использовать специальные символы в поле 'Год', при покупке")
     @Test
     public void useSpecialCharactersInYearFieldWithBuyForm() {
@@ -734,6 +742,7 @@ public class OrderTravelFormTest {
         purchaseForm.setYear(DataHelper.getSpecialCharacters());
         purchaseForm.isEmptyYearField();
     }
+
     @DisplayName("Попытка использовать специальные символы в поле 'Год', при оформлении кредита")
     @Test
     public void useSpecialCharactersInYearFieldWithCreditForm() {
@@ -744,9 +753,10 @@ public class OrderTravelFormTest {
         purchaseForm.setYear(DataHelper.getSpecialCharacters());
         purchaseForm.isEmptyYearField();
     }
+
     @DisplayName("Попытка направить форму покупки где в полях дата указан прошлый месяц")
     @Test
-    public void tryPushBuyFormWithValueInDateFieldsIsLastMonth () {
+    public void tryPushBuyFormWithValueInDateFieldsIsLastMonth() {
         var homePage = new HomePage();
         homePage.isOpenHomePage();
         homePage.openBuyForm();
@@ -757,10 +767,11 @@ public class OrderTravelFormTest {
         purchaseForm.setCvvField(DataHelper.getValidCvv());
         purchaseForm.acceptButtonClick();
         purchaseForm.expiredCardErrorSubMonthField();
-}
+    }
+
     @DisplayName("Попытка направить форму кредита где в полях дата указан прошлый месяц")
     @Test
-    public void tryPushCreditFormWithValueInDateFieldsIsLastMonth () {
+    public void tryPushCreditFormWithValueInDateFieldsIsLastMonth() {
         var homePage = new HomePage();
         homePage.isOpenHomePage();
         homePage.openCreditForm();
@@ -772,9 +783,10 @@ public class OrderTravelFormTest {
         purchaseForm.acceptButtonClick();
         purchaseForm.expiredCardErrorSubMonthField();
     }
+
     @DisplayName("Попытка направить форму кредита где в поле 'Владелец' использованы русские символы")
     @Test
-    public void tryPushCreditFormWithValueInCardHolderFieldHaveRussianLetters () {
+    public void tryPushCreditFormWithValueInCardHolderFieldHaveRussianLetters() {
         var homePage = new HomePage();
         homePage.isOpenHomePage();
         homePage.openCreditForm();
@@ -786,9 +798,10 @@ public class OrderTravelFormTest {
         purchaseForm.acceptButtonClick();
         purchaseForm.wrongErrorSubCardholderNameField();
     }
+
     @DisplayName("Попытка направить форму покупки где в поле 'Владелец' использованы русские символы")
     @Test
-    public void tryPushBuyFormWithValueInCardHolderFieldHaveRussianLetters () {
+    public void tryPushBuyFormWithValueInCardHolderFieldHaveRussianLetters() {
         var homePage = new HomePage();
         homePage.isOpenHomePage();
         homePage.openBuyForm();
@@ -800,9 +813,10 @@ public class OrderTravelFormTest {
         purchaseForm.acceptButtonClick();
         purchaseForm.wrongErrorSubCardholderNameField();
     }
+
     @DisplayName("Попытка направить форму покупки где в поле 'Владелец' использованы специальные символы")
     @Test
-    public void tryPushBuyFormWithValueInCardHolderFieldHaveSpecialCharacters () {
+    public void tryPushBuyFormWithValueInCardHolderFieldHaveSpecialCharacters() {
         var homePage = new HomePage();
         homePage.isOpenHomePage();
         homePage.openBuyForm();
@@ -814,9 +828,10 @@ public class OrderTravelFormTest {
         purchaseForm.acceptButtonClick();
         purchaseForm.wrongErrorSubCardholderNameField();
     }
+
     @DisplayName("Попытка направить форму кредита где в поле 'Владелец' использованы специальные символы")
     @Test
-    public void tryPushCreditFormWithValueInCardHolderFieldHaveSpecialCharacters () {
+    public void tryPushCreditFormWithValueInCardHolderFieldHaveSpecialCharacters() {
         var homePage = new HomePage();
         homePage.isOpenHomePage();
         homePage.openCreditForm();
@@ -827,6 +842,75 @@ public class OrderTravelFormTest {
         purchaseForm.setCvvField(DataHelper.getValidCvv());
         purchaseForm.acceptButtonClick();
         purchaseForm.wrongErrorSubCardholderNameField();
+    }
+
+    @DisplayName("Попытка направить форму кредита где в поле 'CVV' содержит только 1 цифру")
+    @Test
+    public void tryPushCreditFormWithValueInCvvFieldHaveOnlyOneDigits() {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openCreditForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setNumberCardField(DataHelper.getRandomCardNumber());
+        purchaseForm.setDate(DataHelper.getCurrentDate());
+        purchaseForm.setCardHolderName(DataHelper.validCardHolderName());
+        purchaseForm.setCvvField(DataHelper.getRandomOneNumber());
+        purchaseForm.acceptButtonClick();
+        purchaseForm.wrongErrorSubCvvCodeField();
+    }
+    @DisplayName("Попытка направить форму кредита где в поле 'CVV' содержит только 1 цифру")
+    @Test
+    public void tryPushBuyFormWithValueInCvvFieldHaveOnlyOneDigits() {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openBuyForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setNumberCardField(DataHelper.getRandomCardNumber());
+        purchaseForm.setDate(DataHelper.getCurrentDate());
+        purchaseForm.setCardHolderName(DataHelper.validCardHolderName());
+        purchaseForm.setCvvField(DataHelper.getRandomOneNumber());
+        purchaseForm.acceptButtonClick();
+        purchaseForm.wrongErrorSubCvvCodeField();
+    }
+    @DisplayName("Попытка использовать букры в поле 'CVV' в форме оформления кредита")
+    @Test
+    public void useLettersInCvvFieldWithCreditForm() {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openCreditForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setCvvField(DataHelper.validCardHolderName());
+        purchaseForm.isEmptyCVVField();
+    }
+    @DisplayName("Попытка использовать букры в поле 'CVV' в форме покупки")
+    @Test
+    public void useLettersInCvvFieldWithBuyForm() {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openBuyForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setCvvField(DataHelper.validCardHolderName());
+        purchaseForm.isEmptyCVVField();
+    }
+    @DisplayName("Попытка использовать специальные символы в поле 'CVV' в форме оформления кредита")
+    @Test
+    public void useSpecialCharactersInCvvFieldWithCreditForm() {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openCreditForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setCvvField(DataHelper.getSpecialCharacters());
+        purchaseForm.isEmptyCVVField();
+    }
+    @DisplayName("Попытка специальные символы в поле 'CVV' в форме покупки")
+    @Test
+    public void useSpecialCharactersInCvvFieldWithBuyForm() {
+        var homePage = new HomePage();
+        homePage.isOpenHomePage();
+        homePage.openBuyForm();
+        var purchaseForm = new PurchaseForm();
+        purchaseForm.setCvvField(DataHelper.getSpecialCharacters());
+        purchaseForm.isEmptyCVVField();
     }
 }
 
