@@ -522,7 +522,7 @@ public class OrderTravelFormTest {
         purchaseForm.setCardHolderName(DataHelper.validCardHolderName());
         purchaseForm.setCvvField(DataHelper.getValidCvv());
         purchaseForm.acceptButtonClick();
-        purchaseForm.wrongErrorSubMonthField();
+        purchaseForm.incorrectlyPeriodErrorSubMonthField();
     }
     @DisplayName("Попытка направить форму кредита с полем 'Месяц', содержащим значение '00'")
     @Test
@@ -537,7 +537,7 @@ public class OrderTravelFormTest {
         purchaseForm.setCardHolderName(DataHelper.validCardHolderName());
         purchaseForm.setCvvField(DataHelper.getValidCvv());
         purchaseForm.acceptButtonClick();
-        purchaseForm.wrongErrorSubMonthField();
+        purchaseForm.incorrectlyPeriodErrorSubMonthField();
     }
 }
 

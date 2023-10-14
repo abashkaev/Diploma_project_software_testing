@@ -25,7 +25,7 @@ public class PurchaseForm {
     private final ElementsCollection notifications = $$(".notification__content");
     private final SelenideElement notificationSuccess = notifications.filterBy(Condition.text("Операция одобрена Банком.")).first();
     private final SelenideElement notificationError = notifications.filterBy(Condition.text("Ошибка! Банк отказал в проведении операции.")).first();
-    private final SelenideElement messageSubCarNumber = $x("//*[@id=\"root\"]/div/form/fieldset/div[1]/span/span/span[3]");
+    private final SelenideElement messageSubCardNumber = $x("//*[@id=\"root\"]/div/form/fieldset/div[1]/span/span/span[3]");
     private final SelenideElement messageSubMonthField = $x("//*[@id=\"root\"]/div/form/fieldset/div[2]/span/span[1]/span/span/span[3]");
     private final SelenideElement messageSubYearField = $x("//*[@id=\"root\"]/div/form/fieldset/div[2]/span/span[2]/span/span/span[3]");
     private final SelenideElement messageSubCardholderNameField = $x("//*[@id=\"root\"]/div/form/fieldset/div[3]/span/span[1]/span/span/span[3]");
@@ -59,7 +59,7 @@ public class PurchaseForm {
         notificationError.shouldBe(Condition.visible, Duration.ofSeconds(20));
     }
     public void emptyErrorSubCurdNumberField () {
-        messageSubCarNumber.shouldHave(Condition.text("Поле обязательно для заполнения"), Condition.visible);
+        messageSubCardNumber.shouldHave(Condition.text("Поле обязательно для заполнения"), Condition.visible);
     }
     public void emptyErrorSubMonthField () {
         messageSubMonthField.shouldHave(Condition.text("Поле обязательно для заполнения"), Condition.visible);
@@ -78,10 +78,16 @@ public class PurchaseForm {
     }
 
     public void wrongErrorSubCurdNumberField () {
-        messageSubCarNumber.shouldHave(Condition.text("Неверный формат"), Condition.visible);
+        messageSubCardNumber.shouldHave(Condition.text("Неверный формат"), Condition.visible);
     }
     public void wrongErrorSubMonthField () {
         messageSubMonthField.shouldHave(Condition.text("Неверный формат"), Condition.visible);
+    }
+    public void incorrectlyPeriodErrorSubMonthField () {
+        messageSubMonthField.shouldHave(Condition.text("Неверно указан срок действия карты"), Condition.visible);
+    }
+    public void incorrectlyPeriodErrorSubYearField () {
+        messageSubMonthField.shouldHave(Condition.text("Неверно указан срок действия карты"), Condition.visible);
     }
     public void wrongErrorSubYearField () {
         messageSubYearField.shouldHave(Condition.text("Неверный формат"), Condition.visible);
