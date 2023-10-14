@@ -23,4 +23,6 @@
 8. После завершения тестирования завершите работу приложения (нажмите CTRL+C) и остановите контейнеры с помощью команды `docker-compose down`.
 
 # Документация 
-*Добавить ссылку на жокументацию*
+[План тестирования](https://github.com/abashkaev/Diploma_project_software_testing/blob/main/docs/TestAutomationPlan.md)https://github.com/abashkaev/Diploma_project_software_testing/blob/main/docs/TestAutomationPlan.md  
+[Отчет по тестирования](https://github.com/abashkaev/Diploma_project_software_testing/blob/main/docs/Report.md)  
+[Отчет по автоматизации](https://github.com/abashkaev/Diploma_project_software_testing/blob/main/docs/Summary.md)https://github.com/abashkaev/Diploma_project_software_testing/blob/main/docs/Summary.md
